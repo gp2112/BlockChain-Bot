@@ -17,8 +17,8 @@ def msg_tx(msg):
 
     elif msg["text"] == "/help": #comando para mostrar comandos disponíveis
         bot.sendMessage(chat_id, "Comandos:\n /t <hash da transação>: ver informações de uma transação"
-                                                    "\n /w <enderesso da carteira>: ver informações de um endereçoo wallet"
-                                                    "\n /qr <enderesso>: gera QR code para endereço")
+                                                    "\n /w <endereço da carteira>: ver informações de um endereço wallet"
+                                                    "\n /qr <endereço>: gera QR code para endereço")
     elif cmd[0] == "/t":
         hash = str(cmd[1])                      #hash será usado para definir as informações contidas no código. No caso o enderesso de transações e carteiras
         try:
