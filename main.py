@@ -3,7 +3,7 @@ import telepot
 from comandos import *
 
 
-bot = telepot.Bot("409542334:AAG4DInHnEQo9O_43fqdAzxx4QdGt95xYF4")
+bot = telepot.Bot("")
 
 print("Bot Iniciado!\n")
 
