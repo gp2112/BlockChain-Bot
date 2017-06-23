@@ -7,7 +7,7 @@ Bot para Telegram que permite vizualizar informações da rede bitcoin
 
 <h4>Comandos:</h4>
 
-/t - Visualiza transação desejada pela hash. Modelo: /t <hash> <br>
+/t - Visualiza transação desejada pelo endereço. Modelo: /t <enderesso> <br>
 /w - visualiza informações de um enderesso de uma carteira. Modelo: /w <endereço> <br>
 /fee - Retorna taxas recomendadas para transações em satoshi/byte caso não seja enviado nenhum outro argumento. 
     O comando pode ser usado como o modelo: /fee <nºs de enderessos de entrada> <nºs de endereços de saída>. Assim serão
