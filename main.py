@@ -1,5 +1,5 @@
 import telepot
-
+from conversao import *
 from comandos import *
 
 
@@ -16,8 +16,10 @@ def msg_tx(msg):
         chat_id = msg["chat"]["id"] #Id do chat em List
         chat_id_Str = str(chat_id)  #ID do chat em string
         user = str(msg["from"]["username"])
-        print("Id: %s / User: @%s / Texto: %s" %(chat_id_Str, user, msg1)) #mandar logs através do console            
-        bot.sendMessage('''id do grupo privado''', "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1)) #Função para mandar logs para mim através de um grupo privado no Telegram
+        print("Id: %s / User: @%s / Texto: %s" %(chat_id_Str, user, msg1))
+
+        bot.sendMessage('''Id do grupo''', "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1))
+    
     except:
         print("Erro de conexão")
 
@@ -30,6 +32,7 @@ def msg_tx(msg):
                                                     "\n\n /qr <endereço>: gera QR code para endereço"
                                                     "\n\n /fee : veja as taxas de transação recomendadas ou use \n/fee <nº de endereços de saída> <nº de endereços de entrada> "
                                                     "para estimar a quantidade de bytes em sua transação e calcuar uma taxa apropriada.\nExemplo: /fee 3 2"
+                                                    "\n\n/cotacao <moeda> : Veja cotação atual em reais, dólar ou euro.\nEx: /cotacao brl"
                                                     "\n\n /feedback <mensagem> : mande sugestões, elogios, informações de bugs e outros ao desenvolvedor")
     elif cmd[0] == "/t":
         try:
@@ -39,7 +42,7 @@ def msg_tx(msg):
             bot.sendMessage(chat_id, emoji.emojize(" :red_circle: Erro no comando! Digite /help para ver o modelo.", use_aliases=True))
 
 
-    elif cmd[0] == "/w":     #Envia informações da Wallet
+    elif cmd[0] == "/w":
         try:
             hash = str(cmd[1])
             wallet(hash, chat_id, bot)          #funções disponíveis no arquivo "comandos.py"
@@ -49,26 +52,31 @@ def msg_tx(msg):
     elif cmd[0] == "/fee": #fee recomendada em satoshi/byte ou recomendada de acordo com o tamanho de byte da transação, em bitcoin
         fee(chat_id, bot, cmd)
 
+    elif cmd[0] == "/cotacao":              #Cotações
+        try:
+            if cmd[1] == "brl":                     #cotação em BRL
+                mercadoBitcoin_brl(bot, chat_id)
+            elif cmd[1] == "usd":                      #cotação em USD
+                coinDesk_usd(chat_id, bot)
+            elif cmd[1] == "eur" or "EUR" or "euro":    #cotação em EUR
+                coinDesk_eur(chat_id, bot)
+        except:bot.sendMessage(chat_id, emoji.emojize(" :red_circle: Erro no comando! Digite /help para ver o modelo.", use_aliases=True))
 
-    elif cmd[0] == "/size":
-        trx_size(chat_id, bot, cmd)
 
-    elif cmd[0] == "/qr":       #Envia o QR code da carteira
+    elif cmd[0] == "/qr":       #Comando para gerar QR code
         try:
             hash = str(cmd[1])
             qr_code(hash, bot, chat_id)
         except:
             bot.sendMessage(chat_id, emoji.emojize(" :red_circle: Erro no comando! Digite /help para ver o modelo.", use_aliases=True))
 
-    elif cmd[0] == "/feedback": #Envia um Feedback
+    elif cmd[0] == "/feedback":         #Enviar Feedback ao desenvolverdor
         bot.sendMessage(chat_id, "Feedback enviado!\nObrigado pela colaboração!")
         bot.sendMessage('''sua ID''', "Feedback de @%s: \"%s\"" %(user, msg["text"]))
-   #            sua ID para onde será enviado o Feedback
-
 
 bot.message_loop(msg_tx)
 
 while True:         #Looping
     pass
 
-   
+
