@@ -1,5 +1,4 @@
 import requests
-import emoji
 
 def mercadoBitcoin_brl(bot, chat_id):
     info_r = requests.get("https://www.mercadobitcoin.net/api/ticker/")
