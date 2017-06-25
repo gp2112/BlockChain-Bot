@@ -20,4 +20,4 @@ Bot para Telegram que permite vizualizar informações da rede bitcoin
 
 Em breve mais novidades
 
-Licensa <a href="http://www.kopimi.com/kopimi"><img src="http://kopimi.com/kopimi/kopitalism.gif" style="width: 10%; height: 10%"/>
+Licensa: <a href="http://www.kopimi.com/kopimi" target="_blank"><img src="http://www.kopimi.com/kopimi/copyme2_blck_bg.gif" height="42" width="42"><a>
