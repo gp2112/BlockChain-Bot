@@ -22,4 +22,4 @@ Versão do Python: 3.6
 
 Em breve mais novidades
 
-Licensa: <a href="http://www.kopimi.com/kopimi" target="_blank"><img src="http://www.kopimi.com/kopimi/copyme2_blck_bg.gif" height="42" width="42"><a>
+Licensa: <a href="https://www.copyleft.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Orange_copyleft.svg/1024px-Orange_copyleft.svg.png" height="42" width="42"><a>
