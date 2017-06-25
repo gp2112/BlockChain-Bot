@@ -12,6 +12,7 @@ Bot para Telegram que permite vizualizar informações da rede bitcoin
 /fee - Retorna taxas recomendadas para transações em satoshi/byte caso não seja enviado nenhum outro argumento. 
     O comando pode ser usado como o modelo: /fee <nºs de enderessos de entrada> <nºs de endereços de saída>. Assim serão
     retornados taxas em BTC recomendadas.<br>
+/cotacao - Mostra cotação atual em brl, dólar ou euro. Ex: /cotacao real <br>
 /qr - Gera um QR code do endereço de uma carteira. Modelo: /qr <endereço> <br>
 /help - Retorna comandos<br>
 /feedback - Envia feedback ao desenvolvedor 
