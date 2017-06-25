@@ -5,6 +5,8 @@ Nome no teleram: @Block4Chain_Bot
 
 Bot para Telegram que permite vizualizar informações da rede bitcoin
 
+Versão do Python: 3.6
+
 <h4>Comandos:</h4>
 
 /t - Visualiza transação desejada pelo endereço. Modelo: /t <enderesso> <br>
