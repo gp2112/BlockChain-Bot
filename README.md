@@ -22,4 +22,5 @@ Versão do Python: 3.6
 
 Em breve mais novidades
 
-<a href="https://www.copyleft.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Orange_copyleft.svg/1024px-Orange_copyleft.svg.png" height="20" width="20"><a>
+<h5>Licensa: </h5>
+<a href="https://www.copyleft.org" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Orange_copyleft.svg/1024px-Orange_copyleft.svg.png" height="20" width="20"><a><p>sinta-se a vontade para utilizar qualquer coisa deste código, seja para qualquer fim.</p>
