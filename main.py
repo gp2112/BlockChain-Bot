@@ -1,5 +1,5 @@
 import telepot
-from conversao import *
+from cotacao import *
 from comandos import *
 
 
@@ -52,16 +52,15 @@ def msg_tx(msg):
     elif cmd[0] == "/fee": #fee recomendada em satoshi/byte ou recomendada de acordo com o tamanho de byte da transação, em bitcoin
         fee(chat_id, bot, cmd)
 
-    elif cmd[0] == "/cotacao":              #Cotações
+    elif cmd[0] == "/rate":              #Cotações
         try:
-            if cmd[1] == "brl":                     #cotação em BRL
+            if cmd[1] == "brl" or cmd[1] == "BRL" or cmd[1] == "real":                     #cotação em BRL
                 mercadoBitcoin_brl(bot, chat_id)
-            elif cmd[1] == "usd":                      #cotação em USD
+            elif cmd[1] == "usd" or cmd[1] == "USD" or cmd[1] == "dólar":                      #cotação em USD
                 coinDesk_usd(chat_id, bot)
-            elif cmd[1] == "eur" or "EUR" or "euro":    #cotação em EUR
+            elif cmd[1] == "eur" or cmd[1] == "EUR" or cmd[1] == "euro":    #cotação em EUR
                 coinDesk_eur(chat_id, bot)
         except:bot.sendMessage(chat_id, emoji.emojize(" :red_circle: Erro no comando! Digite /help para ver o modelo.", use_aliases=True))
-
 
     elif cmd[0] == "/qr":       #Comando para gerar QR code
         try:
