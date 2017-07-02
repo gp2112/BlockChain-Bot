@@ -71,9 +71,23 @@ def msg_tx(msg):
 
     elif cmd[0] == "/feedback":         #Enviar Feedback ao desenvolverdor
         bot.sendMessage(chat_id, "Feedback enviado!\nObrigado pela colaboração!")
-        bot.sendMessage('''sua ID''', "Feedback de @%s: \"%s\"" %(user, msg["text"]))
+        feedback = cmd[1::]
+        fdb = ' '.join(feedback)
+        bot.sendMessage('''seu id''', "Feedback de @%s: \"%s\"" %(user, fdb))
 
 bot.message_loop(msg_tx)
+
+#  ***/Em Teste/***
+while True:                 #Cotação Diária Bitcoin             
+    now = datetime.now()
+    if now.hour == 9 and now.minute == 30:
+        info_r = requests.get("https://www.mercadobitcoin.net/api/ticker/")
+        info = info_r.json()
+        rate = int(info["ticker"]["last"])
+        alta = int(info["ticker"]["high"])
+        baixa = int(info["ticker"]["low"])
+        bot.sendMessage('''Id do Grupo''', emoji.emojize("Cotação Diária Bitcoin:\n:chart_with_upwards_trend: Alta: %d BRL\n:on: Atual: %d BRL\n:chart_with_downwards_trend: Baixa: %d BRL"%(alta, rate, baixa), use_aliases=True))
+        break
 
 while True:         #Looping
     pass
