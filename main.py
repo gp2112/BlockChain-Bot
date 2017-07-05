@@ -4,13 +4,13 @@ from comandos import *
 from datetime import datetime
 
 
-bot = telepot.Bot("TOKEN")
+bot = telepot.Bot("TOKEN") # Token do bot para conecta-lo
 
 
 
 print("Bot Iniciado!\n")
 
-def comandos(msg):
+def comandos(msg):      #função para comandos do bot
 
     try:
         msg1 = str(msg["text"])     #texto enviado ao Bot
@@ -21,7 +21,7 @@ def comandos(msg):
         print("Id: %s / User: @%s / Texto: %s" %(chat_id_Str, user, msg1))
 
         bot.sendMessage('ID DO SEU GRUPO PRIVADO', "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1))
-    
+                        #Crie um grupo para enviar os logs e coloque a Id acima ^ 
     except:
         print("Erro de conexão")
 
@@ -68,7 +68,7 @@ def comandos(msg):
 
     elif cmd[0] == "/qr" or cmd[0] == "/qr@Block4Chain_Bot":
         try:
-            hash = str(cmd[1])
+            hash = str(cmd[1])                  #Comando para enviar qr code de carteira
             qr_code(hash, bot, chat_id)
         except:
             bot.sendMessage(chat_id, emoji.emojize(" :red_circle: Erro no comando! Digite /help para ver o modelo.", use_aliases=True))
@@ -76,12 +76,12 @@ def comandos(msg):
     elif cmd[0] == "/feedback" or cmd[0] == "/feedback@Block4Chain_Bot":
         bot.sendMessage(chat_id, "Feedback enviado!\nObrigado pela colaboração!")
         bot.sendMessage('SEU ID', "Feedback de @%s: \"%s\"" %(user, msg["text"]))
-
+            #Enviar Feedback para o desenvolvedor. Coloque sua id para receber ^ 
 
 
 bot.message_loop(comandos)
 
-while True:
+while True:         #Enviar cotação na hora programada abaixo, para um grupo.
     now = datetime.now()
     if now.hour == 11 and now.minute == 30:
         info_r = requests.get("https://www.mercadobitcoin.net/api/ticker/")
