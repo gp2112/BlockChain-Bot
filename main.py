@@ -3,7 +3,7 @@ from cotacao import *
 from comandos import *
 from datetime import datetime
 
-bot = telepot.Bot("409542334:AAFdhEqaKYcz4zagSVaewQ1kDwkAC_DgkqY")
+bot = telepot.Bot("TOKEN")
 
 print("Bot Iniciado!\n")
 
@@ -17,7 +17,7 @@ def msg_tx(msg):
         user = str(msg["from"]["username"])
         print("Id: %s / User: @%s / Texto: %s" %(chat_id_Str, user, msg1))
 
-        bot.sendMessage(-201719619, "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1))
+        bot.sendMessage('id', "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1))
     
     except:
         print("Erro de conexao")
@@ -73,7 +73,7 @@ def msg_tx(msg):
         bot.sendMessage(chat_id, "Feedback enviado!\nObrigado pela colaboração!")
         feedback = cmd[1::]
         fdb = ' '.join(feedback)
-        bot.sendMessage(177767359, "Feedback de @%s: \"%s\"" %(user, fdb))
+        bot.sendMessage('id', "Feedback de @%s: \"%s\"" %(user, fdb))
 
 bot.message_loop(msg_tx)
 
@@ -86,7 +86,7 @@ while True:                 #Cotação Diária Bitcoin
         rate = int(info["ticker"]["last"])
         alta = int(info["ticker"]["high"])
         baixa = int(info["ticker"]["low"])
-        bot.sendMessage(-205820127, emoji.emojize("Cotação Diária Bitcoin:\n:chart_with_upwards_trend: Alta: %d BRL\n:on: Atual: %d BRL\n:chart_with_downwards_trend: Baixa: %d BRL"%(alta, rate, baixa), use_aliases=True))
+        bot.sendMessage(id, emoji.emojize("Cotação Diária Bitcoin:\n:chart_with_upwards_trend: Alta: %d BRL\n:on: Atual: %d BRL\n:chart_with_downwards_trend: Baixa: %d BRL"%(alta, rate, baixa), use_aliases=True))
         break
 
 while True:         #Looping
