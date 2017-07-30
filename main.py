@@ -81,16 +81,6 @@ def comandos(msg):      #função para comandos do bot
 
 bot.message_loop(comandos)
 
-while True:         #Enviar cotação na hora programada abaixo, para um grupo.
-    now = datetime.now()
-    if now.hour == 11 and now.minute == 30:
-        info_r = requests.get("https://www.mercadobitcoin.net/api/ticker/")
-        info = info_r.json()
-        rate = int(info["ticker"]["last"])
-        alta = int(info["ticker"]["high"])
-        baixa = int(info["ticker"]["low"])
-        bot.sendMessage('ID', emoji.emojize("Cotação Bitcoin diário:\n :chart_with_upwards_trend: Alta: %d BRL\n:on: Atual: %d BRL\n:chart_with_downwards_trend: Baixa: %d BRL"%(alta, rate, baixa), use_aliases=True))
-        break
 
 while True:         #Looping
     pass
