@@ -3,25 +3,27 @@ from cotacao import *
 from comandos import *
 from datetime import datetime
 
-
-bot = telepot.Bot("TOKEN") # Token do bot para conecta-lo
-
-
+bot = telepot.Bot('TOKEN')
 
 print("Bot Iniciado!\n")
 
-def comandos(msg):      #função para comandos do bot
+
+def main(msg):
 
     try:
+        now = datetime.now()
         msg1 = str(msg["text"])     #texto enviado ao Bot
         cmd = msg1.split()          #divide a string em lista
         chat_id = msg["chat"]["id"] #Id do chat em List
         chat_id_Str = str(chat_id)  #ID do chat em string
         user = str(msg["from"]["username"])
         print("Id: %s / User: @%s / Texto: %s" %(chat_id_Str, user, msg1))
+        log = open("log.txt", 'a')
+        log.write("%s/%s/%s %s:%s ->>> Id: %s / User: @%s / Texto: %s\n" %(now.day, now.month, now.year, now.hour, now.minute, chat_id_Str, user, msg1))
+        log.close()
 
-        bot.sendMessage('ID DO SEU GRUPO PRIVADO', "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1))
-                        #Crie um grupo para enviar os logs e coloque a Id acima ^ 
+        bot.sendMessage('Id de Grupo de Log', "Id: %s\nUser: @%s\nTexto: %s" %(chat_id_Str, user, msg1)) #grupo de log (opicional)
+    
     except:
         print("Erro de conexão")
 
@@ -68,7 +70,7 @@ def comandos(msg):      #função para comandos do bot
 
     elif cmd[0] == "/qr" or cmd[0] == "/qr@Block4Chain_Bot":
         try:
-            hash = str(cmd[1])                  #Comando para enviar qr code de carteira
+            hash = str(cmd[1])
             qr_code(hash, bot, chat_id)
         except:
             bot.sendMessage(chat_id, emoji.emojize(" :red_circle: Erro no comando! Digite /help para ver o modelo.", use_aliases=True))
@@ -76,12 +78,10 @@ def comandos(msg):      #função para comandos do bot
     elif cmd[0] == "/feedback" or cmd[0] == "/feedback@Block4Chain_Bot":
         bot.sendMessage(chat_id, "Feedback enviado!\nObrigado pela colaboração!")
         bot.sendMessage('SEU ID', "Feedback de @%s: \"%s\"" %(user, msg["text"]))
-            #Enviar Feedback para o desenvolvedor. Coloque sua id para receber ^ 
 
 
-bot.message_loop(comandos)
 
+bot.message_loop(main)
 
 while True:         #Looping
     pass
-
