@@ -1,6 +1,6 @@
 from control import *
 
-bot = telepot.Bot("427813816:AAGY-SaRHLp7U_sPBvmV8VN2P7LlOkyBFPU")
+bot = telepot.Bot('TOKEN')
 
 print("Bot Iniciado!\n")
 
