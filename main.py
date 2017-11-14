@@ -1,24 +1,20 @@
-from control import *
+import telepot
+from modules.send import send_commands
 
-bot = telepot.Bot('TOKEN')
+try:
+    bot = telepot.Bot('409542334:AAGZ-iKmWg4nrWSxe50LCu4WUY9LpTvl594')
 
-print("Bot Iniciado!\n")
+    print("Bot Iniciado!\n")
 
-def handle(msg):
-    ct, chat_type, chat_id = telepot.glance(msg)
-    user = str(msg["from"]["username"])
-    text = msg["text"]
-    print("Id: %s / User: @%s / Texto: %s" %(chat_id, user, text))
-    logs(msg, user)
-    start(text, chat_id, bot, user)
-    transaction(text, chat_id, bot)
-    wallet(text, chat_id, bot)
-    fee(chat_id, bot, text)
-    rate(text, bot, chat_id)
-    qr_code(text, bot, chat_id)
+    def handle(msg):
+        print(msg['text'])
+        send_commands(bot, msg)
 
 
-bot.message_loop(handle)
+    bot.message_loop(handle)
 
-while True:
+    while True:
+        pass
+
+except KeyboardInterrupt:
     pass
