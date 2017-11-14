@@ -2,7 +2,7 @@ import telepot
 from modules.send import send_commands
 
 try:
-    bot = telepot.Bot('409542334:AAGZ-iKmWg4nrWSxe50LCu4WUY9LpTvl594')
+    bot = telepot.Bot('TOKEN')
 
     print("Bot Iniciado!\n")
 
